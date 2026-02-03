@@ -1,0 +1,554 @@
+/* ==========================================================================
+   Global & Container Styles
+   ========================================================================== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.app-badge {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  color: white;
+}
+
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+/* ==========================================================================
+   Upload Sections
+   ========================================================================== */
+.upload-section {
+  border: 3px dashed #cbd5e0;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: #f7fafc;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.upload-section.dragover {
+  border-color: #667eea;
+  background: #ebf4ff;
+  transform: scale(1.02);
+}
+
+.file-input-wrapper {
+  margin-top: 20px;
+}
+
+.file-input-label {
+  background: #667eea;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.file-input-label:hover {
+  background: #5a67d8;
+}
+
+#fileInput, #datasetInput {
+  display: none;
+}
+
+.dataset-upload-section {
+  background: #f0f4f8;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #dcebf7;
+}
+
+.dataset-upload-label {
+  background: #4a5568;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.dataset-upload-status {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.dataset-upload-status.success {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.dataset-upload-status.error {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.dataset-upload-spinner {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   File Info & Progress
+   ========================================================================== */
+.file-info {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #eef2ff;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.file-basic-info p {
+  margin: 5px 0;
+  color: #2d3748;
+}
+
+.analysis-progress {
+  margin-bottom: 30px;
+}
+
+.stage-indicator h3 {
+  color: #2d3748;
+  margin-bottom: 5px;
+}
+
+.stage-indicator p {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 5px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: right;
+  font-size: 12px;
+  font-weight: bold;
+  color: #4a5568;
+}
+
+/* ==========================================================================
+   Analysis Cards & Grids
+   ========================================================================== */
+.analysis-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.analysis-card h3 {
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  color: #2d3748;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.result-item {
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  border: 1px solid #edf2f7;
+}
+
+.result-item span:first-child {
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Feature Status Colors */
+.malicious { color: #ef4444; font-weight: bold; }
+.suspicious { color: #f97316; font-weight: bold; }
+.safe { color: #22c55e; font-weight: bold; }
+.present { color: #3b82f6; font-weight: bold; }
+.absent { color: #94a3b8; }
+.high { color: #ef4444; font-weight: bold; }
+.normal { color: #64748b; }
+
+/* ==========================================================================
+   Random Forest & Stats
+   ========================================================================== */
+.forest-stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .forest-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat-item {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.stat-value.malware { color: #ef4444; }
+.stat-value.clean { color: #22c55e; }
+
+.stat-label {
+  font-size: 12px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+  display: block;
+}
+
+.forest-visualization {
+  margin: 20px 0;
+  padding: 10px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+/* ==========================================================================
+   Results & Verdict
+   ========================================================================== */
+.result-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  margin-top: 30px;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.final-verdict {
+  margin-bottom: 30px;
+}
+
+.verdict-icon {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.verdict-text {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.verdict-text.malware { color: #ef4444; }
+.verdict-text.clean { color: #22c55e; }
+.verdict-text.error { color: #f59e0b; }
+
+.verdict-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #edf2f7;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detail-label {
+  font-size: 12px;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.detail-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.btn.primary {
+  background: #667eea;
+  color: white;
+  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+}
+
+.btn.primary:hover {
+  background: #5a67d8;
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+.btn.secondary:hover {
+  background: #cbd5e0;
+}
+
+/* ==========================================================================
+   Tables & Lists
+   ========================================================================== */
+.files-list {
+  margin-top: 40px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.files-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #4a5568;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+tr:hover td {
+  background-color: #f8fafc;
+}
+
+.classification-malware { color: #ef4444; font-weight: bold; }
+.classification-clean { color: #22c55e; font-weight: bold; }
+
+.risk-critical { background: #fee2e2; color: #991b1b; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+.risk-high { background: #ffedd5; color: #9a3412; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+.risk-medium { background: #fef3c7; color: #92400e; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+.risk-low { background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+
+.error-row td {
+  color: #ef4444;
+}
+
+/* ==========================================================================
+   Feature List Items
+   ========================================================================== */
+.feature-list {
+  display: grid;
+  gap: 8px;
+}
+
+.feature-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 6px;
+  font-size: 12px;
+  align-items: center;
+  border: 1px solid #edf2f7;
+}
+
+.feature-name { font-weight: 600; color: #2d3748; }
+
+.feature-category { 
+  text-transform: uppercase; 
+  font-size: 10px; 
+  padding: 2px 6px; 
+  border-radius: 4px; 
+  text-align: center;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.feature-category.permission { background: #e0e7ff; color: #3730a3; }
+.feature-category.network { background: #ffedd5; color: #9a3412; }
+.feature-category.file { background: #dcfce7; color: #166534; }
+.feature-category.complexity { background: #fce7f3; color: #9d174d; }
+.feature-category.manifest { background: #e9d5ff; color: #6b21a8; }
+.feature-category.runtime { background: #cffafe; color: #155e75; }
+
+/* ==========================================================================
+   Signature / Blacklist Specifics
+   ========================================================================== */
+.signature-result {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.classification-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 15px;
+}
+
+.classification-badge.blacklist { background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5; }
+.classification-badge.whitelist { background: #dcfce7; color: #22c55e; border: 1px solid #86efac; }
+.classification-badge.suspicious { background: #ffedd5; color: #f97316; border: 1px solid #fdba74; }
+.classification-badge.unknown { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e0; }
+
+.reasons-section {
+  margin-top: 15px;
+  background: #fff5f5;
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 3px solid #ef4444;
+}
+
+.reasons-section h4 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  color: #991b1b;
+}
+
+.reasons-section ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  color: #7f1d1d;
+}
+
+/* ==========================================================================
+   Feedback Section
+   ========================================================================== */
+.feedback-section {
+  margin-top: 15px;
+  background: #f0fdf4;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #bbf7d0;
+}
+
+.feedback-section h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #166534;
+  font-size: 14px;
+}
+
+.feedback-section ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.feedback-section li {
+  color: #15803d;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
